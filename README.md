@@ -16,12 +16,16 @@ Much like the `BH` package, the `RcppCGAL` package can be used via the `LinkingT
 This package currently includes the version 5.3.1 stable release of CGAL.
 
 ### Installation
-To install this package, you can download or clone the git repository. Then you can install using devtools
+To install this package, you can install the version from CRAN:
+```R
+install.packages("RcppCGAL")
+```
+
+Alternatively, you can download or clone the git repository. Then you can install using devtools
 ```R
 devtools::install("RcppCGAL")
 ```
-
-Alternatively, you can install from github directly using the
+You may also install from github directly using the
 `devtools::install_github` function.
 
 By default, the package will try to download the header files from the
@@ -42,6 +46,7 @@ We provide an example of how to perform Hilbert sorting using an R matrix:
 // [[Rcpp::plugins(cpp14)]]  
 
 #include <RcppEigen.h>
+#include <CGAL/basic.h>
 #include <CGAL/Cartesian_d.h>
 #include <CGAL/spatial_sort.h>
 #include <CGAL/Spatial_sort_traits_adapter_d.h>
@@ -98,8 +103,8 @@ Rcpp::IntegerVector hilbertSort(const Eigen::MatrixXd & A)
 ```
 
 Saving this code as `hilbertSort.cpp` and sourcing with Rcpp `Rcpp::sourceCpp("hilbertSort.cpp")`
-makes the function `hilbertSort()`. Note that version 5.2.1
-relies on the C++14 standard. Also, be aware that thisexample 
+makes the function `hilbertSort()`. Note that version 5.3.1
+relies on the C++14 standard. Also, be aware that this example 
 function example assumes that the observations are stored by
 column rather than by row, that is as the transpose of the 
 usual `R` `matrix` or `data.frame`.
