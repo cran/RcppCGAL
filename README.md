@@ -13,7 +13,7 @@ This package allows for the easy linking of the CGAL header files into R package
 Much like the `BH` package, the `RcppCGAL` package can be used via the `LinkingTo:` field in the `DESCRIPTION` file in R packages. This will allow access to the header files in C/C++ source code.
 
 ### Version
-This package currently includes the version 5.4 stable release of CGAL.
+This package currently includes the version 5.4.1 stable release of CGAL.
 
 ### Installation
 To install this package, you can install the version from CRAN:
@@ -42,6 +42,7 @@ We provide an example of how to perform Hilbert sorting using an R matrix:
 
 ```c++
 // [[Rcpp::depends(RcppCGAL)]]
+// [[Rcpp::depends(BH)]]
 // [[Rcpp::depends(RcppEigen)]]
 // [[Rcpp::plugins(cpp14)]]  
 
@@ -61,31 +62,31 @@ typedef CGAL::Spatial_sort_traits_adapter_d<Kernel, Point_d*>   Search_traits_d;
 
 void hilbert_sort_cgal_fun(const double * A, int D, int N,  int * idx)
 {
-
+  
   std::vector<Point_d> v;
   double * temp = new double[D];
-
+  
   for (int n = 0; n < N; n++ ) {
     for (int d = 0; d < D; d ++) {
       temp[d] = A[D * n + d];
     }
     v.push_back(Point_d(D, temp, temp+D));
   }
-
+  
   std::vector<std::ptrdiff_t> temp_index;
   temp_index.reserve(v.size());
-
+  
   std::copy(
     boost::counting_iterator<std::ptrdiff_t>(0),
     boost::counting_iterator<std::ptrdiff_t>(v.size()),
     std::back_inserter(temp_index) );
-
+  
   CGAL::hilbert_sort (temp_index.begin(), temp_index.end(), Search_traits_d( &(v[0]) ) ) ;
-
+  
   for (int n = 0; n < N; n++) {
     idx[n] = temp_index[n];
   }
-
+  
   delete [] temp;
   temp=NULL;
 }
@@ -103,7 +104,7 @@ Rcpp::IntegerVector hilbertSort(const Eigen::MatrixXd & A)
 ```
 
 Saving this code as `hilbertSort.cpp` and sourcing with Rcpp `Rcpp::sourceCpp("hilbertSort.cpp")`
-makes the function `hilbertSort()`. Note that version 5.4
+makes the function `hilbertSort()`. Note that version 5.4.1
 relies on the C++14 standard. Also, be aware that this example 
 function example assumes that the observations are stored by
 column rather than by row, that is as the transpose of the 
