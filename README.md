@@ -33,9 +33,11 @@ CGAL git repository. If you already have one downloaded that you prefer to use,
 you can specify the environmental variable `CGAL_DIR` and `R` will use that
 instead:
 ```R
-Sys.setenv("CGAL_DIR" = "path/to/CGAL/include")
+Sys.setenv("CGAL_DIR" = "path/to/CGAL")
 ```
 Note: this must be done *before* the package is loaded by `R`.
+
+Alternatively, there is a function `cgal_install()` to download the header files or after install. This can be used to update or select an old version, if you wish. See the Installation vignette in the package.
 
 ### Example
 We provide an example of how to perform Hilbert sorting using an R matrix:
@@ -104,8 +106,7 @@ Rcpp::IntegerVector hilbertSort(const Eigen::MatrixXd & A)
 ```
 
 Saving this code as `hilbertSort.cpp` and sourcing with Rcpp `Rcpp::sourceCpp("hilbertSort.cpp")`
-makes the function `hilbertSort()`. Note that version 5.4.1
-relies on the C++14 standard. Also, be aware that this example 
+makes the function `hilbertSort()`. Be aware that this example 
 function example assumes that the observations are stored by
 column rather than by row, that is as the transpose of the 
 usual `R` `matrix` or `data.frame`.
@@ -115,6 +116,5 @@ usual `R` `matrix` or `data.frame`.
 Eric Dunipace
 
 ## License
-This package is provided under the GPL v3+. Note: if you wish to use CGAL for commercial purposes, you must obtain a license from
-the [GeometryFactory](https://geometryfactory.com).
+This package is provided under the GPL v3+. For the header files themselves, please see the information at the CGAL site: [https://www.cgal.org/license.html](https://www.cgal.org/license.html)
 
