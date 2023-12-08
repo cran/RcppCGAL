@@ -1,6 +1,8 @@
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/ericdunipace/RcppCGAL/workflows/R-CMD-check/badge.svg)](https://github.com/ericdunipace/RcppCGAL/actions)
+[![R-CMD-check](https://github.com/ericdunipace/RcppCGAL/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ericdunipace/RcppCGAL/actions/workflows/R-CMD-check.yaml)
+ [![](https://www.r-pkg.org/badges/version/RcppCGAL)](https://www.r-pkg.org/pkg/RcppCGAL)
 <!-- badges: end -->
+  
 ## RcppCGAL: CGAL Headers for R
 
 
@@ -13,7 +15,7 @@ This package allows for the easy linking of the CGAL header files into R package
 Much like the `BH` package, the `RcppCGAL` package can be used via the `LinkingTo:` field in the `DESCRIPTION` file in R packages. This will allow access to the header files in C/C++ source code.
 
 ### Version
-This package currently includes the version 5.4.1 stable release of CGAL.
+This package currently downloads the latest stable release from the CGAL GitHub.
 
 ### Installation
 To install this package, you can install the version from CRAN:
@@ -26,18 +28,28 @@ Alternatively, you can download or clone the git repository. Then you can instal
 devtools::install("RcppCGAL")
 ```
 You may also install from github directly using the
-`devtools::install_github` function.
+`devtools::install_github()` function.
 
 By default, the package will try to download the header files from the
-CGAL git repository. If you already have one downloaded that you prefer to use,
+CGAL GitHub repository. If you already have one downloaded that you prefer to use,
 you can specify the environmental variable `CGAL_DIR` and `R` will use that
 instead:
 ```R
 Sys.setenv("CGAL_DIR" = "path/to/CGAL")
 ```
-Note: this must be done *before* the package is loaded by `R`.
+or, if the function is already installed, you can use the `set_cgal()` function in the package
+```R
+set_cgal("path/to/CGAL")
+```
+and then re-install.
 
-Alternatively, there is a function `cgal_install()` to download the header files or after install. This can be used to update or select an old version, if you wish. See the Installation vignette in the package.
+Typically, the folder with all the header files is called `CGAL`. For example, on my Mac with a Homebrew install of CGAL, I would do
+```R
+Sys.setenv("CGAL_DIR" = "/usr/local/Cellar/cgal/5.5.2/include/CGAL")
+```
+Note: this must be done *before* the package is installed by `R`.
+
+By default, the package will use the 5.6.0 version of the CGAL that is bundled in the tarball.
 
 ### Example
 We provide an example of how to perform Hilbert sorting using an R matrix:
@@ -116,5 +128,5 @@ usual `R` `matrix` or `data.frame`.
 Eric Dunipace
 
 ## License
-This package is provided under the GPL v3+. For the header files themselves, please see the information at the CGAL site: [https://www.cgal.org/license.html](https://www.cgal.org/license.html)
+This package is provided under the GPL-3. For the use of the header files outside this package, please see the information at the CGAL site: [https://www.cgal.org/license.html](https://www.cgal.org/license.html)
 

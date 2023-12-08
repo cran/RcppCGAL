@@ -12,7 +12,7 @@
 
 <meta name="author" content="Eric Dunipace" />
 
-<meta name="date" content="2023-06-17" />
+<meta name="date" content="2023-12-07" />
 
 <title>Installation</title>
 
@@ -340,109 +340,72 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Installation</h1>
 <h4 class="author">Eric Dunipace</h4>
-<h4 class="date">2023-06-17</h4>
+<h4 class="date">2023-12-07</h4>
 
 
 
 <p>This document will briefly cover the installation process of the
 header files for users since there are some possible environmental
 variables that can be used to aid in the download/installation of the
-CGAL header files on your machine. By default, and due to CRAN
-dependencies relying on the headers for C++ files, the package will
-download the latest header files from the CGAL GitHub. If you wish for
-more control or there is an error, read on!</p>
+CGAL header files on your machine. By default, the package is bundled
+with header version . If you wish for more control or there is an error,
+read on!</p>
 <div id="installation-without-system-environment-flags" class="section level2">
 <h2>Installation without system environment flags</h2>
 <p>The process of installing is, hopefully, quite simple for most
 users.</p>
-<div id="you-just-want-the-latest-version" class="section level3">
-<h3>You just want the latest version</h3>
+<div id="you-just-want-the-default-version" class="section level3">
+<h3>You just want the default version</h3>
 <p>If you don’t have any strong desires, do the following:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;RcppCGAL&quot;</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">cgal_install</span>(<span class="at">cgal_path =</span> <span class="cn">NULL</span>, <span class="at">version =</span> <span class="cn">NULL</span>,</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>             <span class="at">clean_files =</span> <span class="cn">TRUE</span>, <span class="at">force =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<p>The functions should take care of the rest! You will have the latest
-version of CGAL from GitHub. This should also happen by default on
-package installation if there is an internet connection.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;RcppCGAL&quot;</span>)</span></code></pre></div>
+<p>You will have the CGAL header files!</p>
 </div>
-<div id="you-want-to-install-a-particular-version-from-the-github" class="section level3">
-<h3>You want to install a particular version from the GitHub</h3>
-<p>If you have a particular version of the CGAL headers you would like
-from the GitHub, use the version argument and keep
-<code>cgal_path = NULL</code>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;RcppCGAL&quot;</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">cgal_install</span>(<span class="at">cgal_path =</span> <span class="cn">NULL</span>, <span class="at">version =</span> <span class="st">&quot;5.5.1&quot;</span>,</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>             <span class="at">clean_files =</span> <span class="cn">TRUE</span>, <span class="at">force =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div id="you-want-to-install-a-particular-version-from-a-url" class="section level3">
+<h3>You want to install a particular version from a URL</h3>
+<p>All you have to do is set the environment variable
+<code>CGAL_DIR</code>. In the shell on Unix/Linux machines, you can
+do</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="bu">export</span> <span class="va">CGAL_DIR</span><span class="op">=</span><span class="st">&quot;https://some/url/cgalheaders.tar.gz&quot;</span></span></code></pre></div>
+<p>or you can set it in R directly</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">CGAL_DIR=</span><span class="st">&quot;https://some/url/cgalheaders.tar.gz&quot;</span>)</span></code></pre></div>
+<p>If you have already installed the package, you can use</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">set_cgal</span>(<span class="st">&quot;https://some/url/cgalheaders.tar.gz&quot;</span>)</span></code></pre></div>
+<p>and then re-install package.</p>
 </div>
 <div id="you-have-a-local-install-you-want-to-use" class="section level3">
 <h3>You have a local install you want to use</h3>
 <p>If you have already installed the CGAL header files and just want to
-use that, you just need to specify the system path to the CGAL folder in
-the argument <code>cgal_path</code>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;RcppCGAL&quot;</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">cgal_install</span>(<span class="at">cgal_path =</span> <span class="st">&quot;path/to/CGAL&quot;</span>, <span class="at">version =</span> <span class="cn">NULL</span>,</span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>             <span class="at">clean_files =</span> <span class="cn">TRUE</span>, <span class="at">force =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<p>The function will then copy the files into the R package
-directory.</p>
-</div>
-<div id="you-have-a-particular-url-you-want-to-download-the-headers-from" class="section level3">
-<h3>You have a particular URL you want to download the headers from</h3>
-<p>This is similar to the previous example; you just need to specify the
-exact location of the header files you want to download.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;RcppCGAL&quot;</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">cgal_install</span>(<span class="at">cgal_path =</span> <span class="st">&quot;https://some/url/cgalheaders.tar.gz&quot;</span>, <span class="at">version =</span> <span class="cn">NULL</span>,</span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>             <span class="at">clean_files =</span> <span class="cn">TRUE</span>, <span class="at">force =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-</div>
-</div>
-<div id="installation-with-system-environment-flags" class="section level2">
-<h2>Installation with system environment flags</h2>
-<p>In some case, you may want to install the CGAL header files by
-default on installation and perhaps you may have a custom path. In this
-case, you can set two environmental variables.</p>
-<p>The first, <code>CGAL_DIR</code>, will specify a directory or URL to
-search for the CGAL header files like above. If it is not set, the
-package will simply download the latest version or by using the argument
-of <code>cgal_path</code> in the <code>cgal_install</code> function. In
-the shell on Unix/Linux machines, you can do</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="bu">export</span> <span class="va">CGAL_DIR</span><span class="op">=</span><span class="st">&quot;https://some/url/cgalheaders.tar.gz&quot;</span></span></code></pre></div>
+use that, you just need to specify the system path to the CGAL folder,
+much the same as setting a URL above.</p>
+<p>In the Linux/Unix shell you can do</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="bu">export</span> <span class="va">CGAL_DIR</span><span class="op">=</span><span class="st">&quot;path/to/include/CGAL&quot;</span></span></code></pre></div>
 <p>or you can set it in R directly</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">CGAL_DIR=</span><span class="st">&quot;https://some/url/cgalheaders.tar.gz&quot;</span>)</span></code></pre></div>
-<p>The second variable, <code>CGAL_DOWNLOAD</code>, will let R know to
-install the header files automatically when installing the
-<code>RcppCGAL</code> package. If <code>CGAL_DOWNLOAD</code> is any
-other value than 0, the header files will be automatically downloaded.
-If <code>CGAL_DOWNLOAD=0</code> , the header files will not be
-downloaded. This mean that in most cases, i.e. on CRAN, the header files
-will be downloaded as long as there is an internet connection. You can
-set this variable via the shell</p>
-<p>or in R</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="bu">export</span> <span class="va">CGAL_DOWNLOAD</span><span class="op">=</span><span class="st">&quot;1&quot;</span></span></code></pre></div>
-<p>or you can set it in R directly</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">CGAL_DOWNLOAD=</span><span class="st">&quot;1&quot;</span>)</span></code></pre></div>
-<p>Then you can install the package and everything should flow
-automatically.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">install.packages</span><span class="er">(</span><span class="st">&quot;RcppCGAL&quot;</span><span class="kw">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">CGAL_DIR=</span><span class="st">&quot;path/to/include/CGAL&quot;</span>)</span></code></pre></div>
+<p>If you have already installed the package, you can use</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">set_cgal</span>(<span class="st">&quot;path/to/include/CGAL)</span></span></code></pre></div>
+<p>and then re-install package.</p>
 </div>
-<div id="updating-header-files" class="section level2">
-<h2>Updating header files</h2>
-<p>The process of updating the files is simple. We can just follow the
-same procedures as above using the <code>cgal_install</code> function
-but set <code>force = TRUE</code>:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">cgal_install</span>(<span class="at">cgal_path =</span> <span class="cn">NULL</span>, <span class="at">version =</span> <span class="cn">NULL</span>,</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>             <span class="at">clean_files =</span> <span class="cn">TRUE</span>, <span class="at">force =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p>No need to install the whole package again. This will also give you a
-warning saying it will overwrite the current header files.</p>
 </div>
 <div id="to-clean-or-not-to-clean" class="section level2">
 <h2>To clean or not to clean</h2>
-<p>Pretty much you should always clean the header files—i.e., leave
-<code>clean_files = TRUE</code> untouched. The reason is that the CGAL
-header files have calls to <code>std::exit</code>,
+<p>By default, the package will clean any header files that are provided
+into the <code>CGAL_DIR</code> environmental variable. The reason for
+this is that the CGAL header files have calls to <code>std::exit</code>,
 <code>std::cerr</code>, and <code>std::cout</code>, which can can cause
 R to crash or for messages to not appear on the R consol. By default,
 <code>RcppCGAL</code> will search for these funtions and replace them
 with the <code>Rcpp</code> equivalents; however, should you find this
 isn’t happening, please raise an issue on the GitHub!</p>
+<p>At this time, the package does leaving the header files uncleaned. If
+for some reason you have a use case where you would like them not
+cleaned, please raise an issue on the GitHub for this package!</p>
+</div>
+<div id="changes-from-last-version-install-procedure" class="section level2">
+<h2>Changes from last version install procedure</h2>
+<p>The last version had an <code>cgal_install()</code> function to
+download the header files on load. This function has been soft
+deprecated in favor of the default process since some packages may be
+installed as read only.</p>
 </div>
 
 
