@@ -106,6 +106,9 @@ untar_tarball <- function(temp_file, dest_folder, own = FALSE) {
     Sys.getenv("TAR")
   }
   utils::untar(tarfile = temp_file, exdir = tmp_dir_, tar = whichtar)
+  
+  # using system TAR causes windwos server builds to hang
+  # utils::untar(tarfile = temp_file, exdir = tmp_dir_)
   unzip_file  <- list.dirs(tmp_dir_, 
                            recursive = FALSE, full.names = FALSE)
   
@@ -117,7 +120,7 @@ untar_tarball <- function(temp_file, dest_folder, own = FALSE) {
   
   # message("  Moving CGAL folder to its final location\n")
   # Move good file into final position
-  if (!file.exists(target_file)) dir.create(target_file)
+  # if (!file.exists(target_file)) dir.create(target_file)
   file.rename(source_file, target_file)
   
   # Delete temp files
