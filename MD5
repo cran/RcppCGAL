@@ -1,6 +1,6 @@
-c829cf284bbb96691460fc99b0cdecb1 *DESCRIPTION
+2137675c20035a5c081191a7c998ee12 *DESCRIPTION
 c5ea65c194ac71976588e2e9c3ddc5f5 *NAMESPACE
-4176a99244a97b44fdc4e64efb8d5efb *NEWS.md
+0313b9438ab13c2e6e58044b63943434 *NEWS.md
 5f6da613faba0ea551467e27465f258c *R/RcppCGAL-package.R
 fd991bfa6a378242e700b91096dcc967 *R/cgal_check.R
 b997028c4415edbd9112968011720276 *R/cgal_version.R
@@ -14,13 +14,13 @@ c53f18ae5c4f2743521f3ea8b3d35d97 *build/vignette.rds
 e890112877abbbe5071b3bd3fb711d7a *configure
 eabcad63d8b0a123cfa5594db25a6074 *configure.win
 ec82cbec59e027e6a88cfb352f63aa04 *inst/AUTHORS
-6b5216610b53788e2121992db212d32a *inst/CITATION
+9ffd90c982acd00f16fbd69553399dca *inst/CITATION
 e5155bfa6b6b0c5c153669c2d003cde1 *inst/WORDLIST
 1f6070a5c3791391af873cf838b43c31 *inst/doc/Installation.R
 8d08e1224eba287e8e1f00ef4116e2ea *inst/doc/Installation.Rmd
-e64040fa64df8ffec67ec21e1779419e *inst/doc/Installation.html
-5ae01424b9cca53ce8e04ad20d416664 *inst/include/CGAL_zip.tar.xz
-19c25d7d5dcb8b315276738c8fe0d042 *man/RcppCGAL-package.Rd
+08278cecd80058916185df069fc1a3de *inst/doc/Installation.html
+5a31332fec4810b935bbfd6f624637f4 *inst/include/CGAL_zip.tar.xz
+e0e9ebab01a877d1c0f678a4ea59c5dd *man/RcppCGAL-package.Rd
 0ce92c3214b4a9ad2333611789c29759 *man/cgal_is_installed.Rd
 a724fed8bd0413c1f6f389a23335ab80 *man/cgal_version.Rd
 1f08d702589e93ffec3d395b63b3d61f *man/set_cgal.Rd
@@ -31,6 +31,6 @@ a141dd01a0d4ccae3a90746a17dbd5ee *man/unset_cgal.Rd
 27170b3b690782ffd37b2afd4f591999 *tests/testthat/test-cgal_present.R
 8b6b0a0e61f4d2cfbafcff6d1ef6d559 *tools/config.R
 571bebbdf10b2ebdc90ae6309ce81a63 *tools/config/cleanup.R
-21d2a6876647c1f782bb4a63dc656f73 *tools/config/configure.R
-e8371eca1f0750442ea80815d07d4b95 *tools/config/downloader_functions.R
+60f1be480a7bf29b189a12b57076d5f6 *tools/config/configure.R
+9e6e3db9ab66512d2449e1735bda2a9f *tools/config/downloader_functions.R
 8d08e1224eba287e8e1f00ef4116e2ea *vignettes/Installation.Rmd
