@@ -1,8 +1,8 @@
 Package: RcppCGAL
 Type: Package
 Title: 'Rcpp' Integration for 'CGAL'
-Version: 5.6.3
-Date: 2024-04-29
+Version: 5.6.4
+Date: 2024-07-04
 Authors@R: 
     c(
     person(given = "Eric", family = "Dunipace", 
@@ -33,10 +33,10 @@ Biarch: TRUE
 Language: en-US
 URL: https://github.com/ericdunipace/RcppCGAL
 Config/testthat/edition: 3
-Packaged: 2024-04-30 05:04:42 UTC; eifer
+Packaged: 2024-07-04 22:09:59 UTC; eifer
 Author: Eric Dunipace [aut, cre] (<https://orcid.org/0000-0001-8909-213X>),
   Tyler Morgan-Wall [ctb],
   The CGAL Project [cph]
 Maintainer: Eric Dunipace <edunipace@mail.harvard.edu>
 Repository: CRAN
-Date/Publication: 2024-04-30 05:30:02 UTC
+Date/Publication: 2024-07-04 23:10:02 UTC
