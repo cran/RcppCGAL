@@ -55,22 +55,22 @@ unset_cgal <- function(...) {
   
   target_file <- file.path(dest_folder, "CGAL")
   
-  tmp_dir_ <- file.path("~","uz_tmp90")
-  dir.create(tmp_dir_)
+  tmp_dir_ <- tempfile(pattern = "uz_tmp90") 
   
   utils::untar(tarfile = temp_file, exdir = tmp_dir_, tar = "internal")
   unzip_file  <- list.dirs(tmp_dir_, 
                            recursive = FALSE, full.names = FALSE)
   
   if (isTRUE(own)) {
-    source_file <- file.path(tmp_dir_, unzip_file)
+    source_file <- file.path(tmp_dir_, unzip_file,"")
   } else {
-    source_file <- file.path(tmp_dir_,unzip_file, "include","CGAL")
+    source_file <- file.path(tmp_dir_,unzip_file, "include","CGAL","")
   }
   
   message("  Moving CGAL folder to its final location\n")
   # Move good file into final position
-  if (!file.exists(target_file)) dir.create(target_file)
+  if (!file.exists(source_file)) stop("Error! The headerfiles were not decompressed properly!")
+  # if (!file.exists(target_file)) dir.create(target_file)
   file.rename(source_file, target_file)
   
   # Delete temp files
