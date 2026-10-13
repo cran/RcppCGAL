@@ -1,8 +1,8 @@
 Package: RcppCGAL
 Type: Package
 Title: 'Rcpp' Integration for 'CGAL'
-Version: 6.2.1
-Date: 2026-09-04
+Version: 6.2.1.1
+Date: 2026-10-08
 Authors@R: 
     c(
     person(given = "Eric", family = "Dunipace", 
@@ -12,6 +12,8 @@ Authors@R:
     person(given = "Tyler", "Morgan-Wall", 
         role = c("ctb"),
         email = "tylermw@gmail.com"),
+    person(given = "Michael", family = "Chirico",
+        role = c("ctb")),
     person("The CGAL Project", role = "cph")
     )
 Description: Creates a header only package to link to the 'CGAL' 
@@ -22,7 +24,7 @@ Description: Creates a header only package to link to the 'CGAL'
   see the 'CGAL' documentation at <https://www.cgal.org>. Currently
   downloads version 6.2.1 of the 'CGAL' header files.
 License: GPL-3
-Imports: Rcpp, utils
+Imports: Rcpp, utils, lifecycle
 Suggests: knitr, rmarkdown, spelling, testthat (>= 3.0.0)
 BugReports: https://github.com/ericdunipace/RcppCGAL/issues
 NeedsCompilation: no
@@ -32,12 +34,13 @@ Biarch: TRUE
 Language: en-US
 URL: https://github.com/ericdunipace/RcppCGAL
 Config/testthat/edition: 3
-Config/roxygen2/version: 8.0.0
-Packaged: 2026-09-04 22:57:10 UTC; eifer
+Config/roxygen2/version: 8.1.0
+Packaged: 2026-10-12 22:57:14 UTC; eifer
 Author: Eric Dunipace [aut, cre] (ORCID:
     <https://orcid.org/0000-0001-8909-213X>),
   Tyler Morgan-Wall [ctb],
+  Michael Chirico [ctb],
   The CGAL Project [cph]
 Maintainer: Eric Dunipace <edunipace@mail.harvard.edu>
 Repository: CRAN
-Date/Publication: 2026-09-05 05:10:13 UTC
+Date/Publication: 2026-10-13 00:10:02 UTC
